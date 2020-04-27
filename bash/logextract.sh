@@ -11,8 +11,6 @@ DIRECTORY="mediciones" # this is the directory where the log files are in
 # filter lines getting the line number
 #
 
-
-
 mkdir -p $DIR # create folder if does not exists
 # create a for loop to cycle through desired files.
 # read the files of directory
@@ -38,17 +36,14 @@ do
 	    delimeter='-'
 	    SplitLineByDelimeter line delimeter split_result
 	    line_number="${split_result[0]}"
-	    GeneratedCSV="${split_result[-1]}"
-	    #echo "$GeneratedCSV"
+	    data="${split_result[-1]}"
 
 	    re='^[0-9a-zA-Z]+$' # regex to check if variable is a number
 	    if ! [[ $data =~ $re ]] ;
 	    then
-		#echo "error: Not a number in file $file";
-		# continue
-	    #else
+
 		date_line_number=$(($line_number - 2))
-		# printf " line number: $line_number - 2 : $date_line_number\n"
+
 		# show that line
 		date_line=$(sed -n "${date_line_number}p" "$file")
 		date_line_clean=$(echo ${date_line%demos*}) # remove from word demos to the end of line

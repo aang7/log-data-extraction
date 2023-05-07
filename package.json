@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-2-csv": "^3.5.7"
+    "json-2-csv": "^3.20.0"
   }
 }
